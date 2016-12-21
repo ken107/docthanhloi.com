@@ -9,11 +9,11 @@
 		function readIt() {
 			responsiveVoice.speak(document.getElementById("text-to-read").value, "Vietnamese Male");
 		}
-		
+
 		function changeInputMethod() {
 			CHIM.SetMethod(document.getElementById("input-method").value);
 		}
-		
+
 		$(function() {
 			CHIM.Attach(document.getElementById("text-to-read"), true);
 			changeInputMethod();
@@ -31,11 +31,17 @@
 		</select>
 	</div>
 	<div style="margin-top: 10px;">
-		<textarea id="text-to-read" cols="60" rows="10"></textarea>
+		<textarea id="text-to-read" cols="60" rows="15"></textarea>
 	</div>
 	<div style="margin-top: 10px;">
 		<button onclick="readIt()">Nghe Ðọc</button>
 		<button onclick='alert("Chức năng này chưa sử dụng được")'>MP3</button>
+	</div>
+	<div style="margin-top: 25px;">
+		<a href="https://chrome.google.com/webstore/detail/read-aloud-a-text-to-spee/hdhinadidafjejdhmfkjgnolgimiaplp?hl=vi">Cài tiện ích Chrome để đọc thành lời bất kỳ trang web nào</a>
+	</div>
+	<div style="margin-top: 5px;">
+		<a href="http://responsivevoice.org">ResponsiveVoice-NonCommercial</a> licensed under <a href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img title="ResponsiveVoice Text To Speech" src="https://responsivevoice.org/wp-content/uploads/2014/08/95x15.png" alt="95x15" width="95" height="15" style="vertical-align: middle;" />
 	</div>
 </body>
 </html>
