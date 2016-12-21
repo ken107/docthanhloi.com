@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="https://code.responsivevoice.org/responsivevoice.js"></script>
+	<script src="xvnkb.js"></script>
+	<script>
+		function readIt() {
+			responsiveVoice.speak(document.getElementById("text-to-read").value, "Vietnamese Male");
+		}
+		
+		function changeInputMethod() {
+			CHIM.SetMethod(document.getElementById("input-method").value);
+		}
+		
+		$(function() {
+			CHIM.Attach(document.getElementById("text-to-read"), true);
+			changeInputMethod();
+		});
+	</script>
+</head>
+<body>
+	<h1>Nghe Đọc Tiếng Việt</h1>
+	<div>
+		Kiểu Gõ:
+		<select id="input-method" onchange="changeInputMethod()">
+			<option value="1">VNI</option>
+			<option value="2">Telex</option>
+			<option value="3">VIQR</option>
+		</select>
+	</div>
+	<div style="margin-top: 10px;">
+		<textarea id="text-to-read" cols="60" rows="10"></textarea>
+	</div>
+	<div style="margin-top: 10px;">
+		<button onclick="readIt()">Nghe Ðọc</button>
+		<button onclick='alert("Chức năng này chưa sử dụng được")'>MP3</button>
+	</div>
+</body>
+</html>
