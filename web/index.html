@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Đọc Thành Lời | LSD Software</title>
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=540">
+  <meta name="description" content="Công cụ để chuyển văn bản thành giọng nói (text-to-speech).">
+  <meta property="og:title" content="Đọc Thành Lời | LSD Software">
+  <meta property="og:description" content="Công cụ để chuyển văn bản thành giọng nói (text-to-speech).">
+	<style>
+		.extras {
+			margin-top: 25px;
+			padding: 0 0 0 18px;
+			list-style: circle;
+		}
+		.extras li {
+			margin-top: 2px;
+		}
+		.copyright {
+			position: fixed;
+			bottom: 5px;
+			right: 10px;
+			color: gray;
+			font-size: small;
+		}
+	</style>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="js/xvnkb.js"></script>
+	<script src="js/index.js"></script>
+</head>
+<body>
+	<h1>Đọc Thành Lời</h1>
+	<div>
+		Kiểu Gõ:
+		<select id="input-method" onchange="changeInputMethod()">
+			<option value="1">VNI</option>
+			<option value="2">Telex</option>
+			<option value="3">VIQR</option>
+		</select>
+	</div>
+	<div style="margin-top: 10px;">
+		<textarea id="text-to-read" style="width: 500px; height: 250px; background-color: #eee;"></textarea>
+	</div>
+	<div style="margin-top: 10px;">
+		<button onclick="readIt()">Nghe Ðọc</button>
+		<button onclick="downloadMp3()">Download MP3</button>
+	</div>
+	<ul class="extras">
+		<li>
+			<a href="https://www.lsdsoftware.com/contact.html?subject=Doc%20Thanh%20Loi">Báo lỗi hoặc góp ý</a>
+		</li>
+		<li>
+			<a href="https://chrome.google.com/webstore/detail/read-aloud-a-text-to-spee/hdhinadidafjejdhmfkjgnolgimiaplp?hl=vi">Cài tiện ích Chrome để đọc thành lời bất kỳ trang web nào</a>
+		</li>
+	</ul>
+	<div class="copyright">
+		&copy; <a href="https://www.lsdsoftware.com">LSD Software</a> 2017
+	</div>
+</body>
+</html>
