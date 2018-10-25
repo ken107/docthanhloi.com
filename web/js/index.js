@@ -30,7 +30,7 @@ function RemoteTTS(host) {
     }
     return new Promise(function(fulfill) {
       audio.pause();
-      audio.src = host + "/read-aloud/speak/vi?q=" + text;
+      audio.src = host + "/read-aloud/speak/vi/any?a=1&q=" + encodeURIComponent(text);
       audio.onplay = fulfill;
       audio.onerror =
       audio.onended = onEnd;
@@ -39,7 +39,7 @@ function RemoteTTS(host) {
   }
 
   this.download = function(text) {
-    location.href = host + "/read-aloud/speak/vi?saveAs=docthanhloi.mp3&q=" + text;
+    location.href = host + "/read-aloud/speak/vi/any?saveAs=docthanhloi.mp3&a=1&q=" + encodeURIComponent(text);
   }
 
   this.isSpeaking = function(callback) {
