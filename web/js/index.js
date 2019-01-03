@@ -24,22 +24,27 @@ function RemoteTTS(host) {
 
   this.speak = function(text, onEnd) {
     if (!audio) {
-      audio = document.createElement("AUDIO");
+      audio = document.getElementById("player");
       audio.src = "sound/silence.mp3";
       audio.play();
+      $("#playback").show();
     }
+    $("#progress-ind").show();
     return new Promise(function(fulfill) {
       audio.pause();
-      audio.src = host + "/read-aloud/speak/vi/any?a=1&q=" + encodeURIComponent(text);
-      audio.onplay = fulfill;
+      audio.src = host + "/read-aloud/speak/vi/" + encodeURIComponent($("#voice").val()) + "?q=" + encodeURIComponent(text);
+      audio.onplaying = fulfill;
       audio.onerror =
       audio.onended = onEnd;
       audio.play();
     })
+    .then(function() {
+      $("#progress-ind").hide();
+    })
   }
 
   this.download = function(text) {
-    location.href = host + "/read-aloud/speak/vi/any?saveAs=docthanhloi.mp3&a=1&q=" + encodeURIComponent(text);
+    location.href = host + "/read-aloud/speak/vi/" + encodeURIComponent($("#voice").val()) + "?saveAs=docthanhloi.mp3&q=" + encodeURIComponent(text);
   }
 
   this.isSpeaking = function(callback) {

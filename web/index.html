@@ -12,13 +12,14 @@
 
 	<title>Đọc Thành Lời | LSD Software</title>
 	<meta charset="utf-8"/>
-	<meta name="viewport" content="width=540">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Công cụ để chuyển văn bản thành giọng nói (text-to-speech).">
   <meta property="og:title" content="Đọc Thành Lời | LSD Software">
   <meta property="og:description" content="Công cụ để chuyển văn bản thành giọng nói (text-to-speech).">
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 	<style>
 		.extras {
-			margin-top: 25px;
 			padding: 0 0 0 18px;
 			list-style: circle;
 		}
@@ -26,34 +27,66 @@
 			margin-top: 2px;
 		}
 		.copyright {
-			position: fixed;
-			bottom: 5px;
-			right: 10px;
 			color: gray;
 			font-size: small;
 		}
+		.copyright a {
+			color: gray;
+		}
+		#playback {
+			display: none;
+		}
+		#progress-ind {
+			display: none;
+			height: 2em;
+			vertical-align: middle;
+			margin-left: 1em;
+		}
+		#text-to-read {
+			max-width: 500px;
+			height: 220px;
+			background-color: #eee;
+		}
 	</style>
 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 	<script src="js/xvnkb.js"></script>
 	<script src="js/index.js"></script>
 </head>
 <body>
-	<h1>Đọc Thành Lời</h1>
-	<div>
-		Kiểu Gõ:
-		<select id="input-method" onchange="changeInputMethod()">
+	<div class="container">
+	<h2 class="mt-3 mb-3">Đọc Thành Lời</h2>
+	<form class="mb-2 form-inline">
+		<label for="input-method" class="mr-1">Kiểu Gõ:</label>
+		<select id="input-method" class="form-control mr-3" onchange="changeInputMethod()">
 			<option value="1">VNI</option>
 			<option value="2">Telex</option>
 			<option value="3">VIQR</option>
 		</select>
+		<label for="voice" class="mr-1">Giọng Đọc:</label>
+		<select id="voice" class="form-control mr-3">
+			<option value="GoogleTranslate Vietnamese">Ngọc Hạ</option>
+			<option value="Microsoft Vietnamese (An)">Quốc An</option>
+			<option value="OpenFPT Vietnamese (Ngoc Lam)">Ngọc Lam</option>
+			<option value="OpenFPT Vietnamese (Ha Tieu Mai)">Hà Tiểu Mai</option>
+			<option value="OpenFPT Vietnamese (Thu Dung)">Thu Dung</option>
+			<option value="OpenFPT Vietnamese (Cao Chung)">Cao Chung</option>
+		</select>
+	</form>
+	<div class="mb-2">
+		<textarea id="text-to-read" class="form-control">Nhập văn bản vào đây rồi nhấn nút Nghe Đọc</textarea>
 	</div>
-	<div style="margin-top: 10px;">
-		<textarea id="text-to-read" style="width: 500px; height: 250px; background-color: #eee;"></textarea>
+	<div class="mb-3" id="playback">
+		<div style="display: flex; align-items: center;">
+			<audio id="player" controls></audio>
+			<img id="progress-ind" src="img/waiticon.gif"/>
+		</div>
 	</div>
-	<div style="margin-top: 10px;">
-		<button onclick="readIt()">Nghe Ðọc</button>
-		<button onclick="downloadMp3()">Download MP3</button>
+	<div class="mb-4">
+		<button type="button" class="btn btn-primary" onclick="readIt()">Nghe Ðọc</button>
+		<button type="button" class="btn btn-secondary" onclick="downloadMp3()">Download MP3</button>
 	</div>
 	<ul class="extras">
 		<li>
@@ -65,6 +98,7 @@
 	</ul>
 	<div class="copyright">
 		&copy; <a href="https://www.lsdsoftware.com">LSD Software</a> 2017
+	</div>
 	</div>
 </body>
 </html>
