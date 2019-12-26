@@ -1,5 +1,5 @@
 
-var tts = new RemoteTTS("https://support.lsdsoftware.com");
+var tts = new RemoteTTS("https://support.readaloud.app");
 
 function readIt() {
   tts.speak($("#text-to-read").val());
